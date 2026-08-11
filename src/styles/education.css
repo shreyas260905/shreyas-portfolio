@@ -12,8 +12,8 @@
   left: 5px;
   top: var(--space-xs);
   bottom: var(--space-xs);
-  width: 1px;
-  background: var(--grid-line-strong);
+  width: 1.5px;
+  background: #B8B8B8;
 }
 
 .t-item {
