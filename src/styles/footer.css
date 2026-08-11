@@ -1,0 +1,21 @@
+/* ==========================================================================
+   FOOTER
+   ========================================================================== */
+
+footer {
+  padding: var(--space-xl) 0;
+  border-top: var(--border-hairline);
+}
+footer .wrap {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+}
+footer p {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--paper-dim);
+  letter-spacing: 0.05em;
+}

@@ -1,0 +1,55 @@
+/* ==========================================================================
+   BASE / RESET
+   Global element defaults. No component-specific rules here.
+   ========================================================================== */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  min-height: 100%;
+  background-color: var(--bg-0);
+}
+
+body {
+  background-color: var(--bg-0);
+  background-image:
+    radial-gradient(ellipse 110% 75% at 50% -15%, var(--bg-page-grey-b) 0%, transparent 56%),
+    radial-gradient(ellipse 80% 60% at 100% 45%, var(--bg-page-grey-a) 0%, transparent 54%),
+    radial-gradient(ellipse 75% 55% at 0% 70%, var(--bg-page-grey-c) 0%, transparent 50%),
+    linear-gradient(168deg, var(--bg-0) 0%, var(--bg-page-grey-a) 38%, var(--bg-0) 62%, var(--bg-page-grey-b) 100%);
+  background-attachment: fixed;
+  color: var(--paper);
+  font-family: var(--font-sans);
+  line-height: 1.6;
+  overflow-x: hidden;
+  cursor: default;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+::selection {
+  background: var(--cyan);
+  color: var(--bg-0);
+}
+
+a {
+  color: inherit;
+}
+
+h1, h2, h3 {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}

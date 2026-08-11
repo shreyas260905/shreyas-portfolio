@@ -1,0 +1,57 @@
+/* ==========================================================================
+   EDUCATION ("Foundations") — vertical timeline
+   ========================================================================== */
+
+.timeline {
+  position: relative;
+  padding-left: var(--space-xl);
+}
+.timeline::before {
+  content: "";
+  position: absolute;
+  left: 5px;
+  top: var(--space-xs);
+  bottom: var(--space-xs);
+  width: 1px;
+  background: var(--grid-line-strong);
+}
+
+.t-item {
+  position: relative;
+  padding-bottom: 44px;
+  transition: transform 0.25s ease;
+}
+.t-item:last-child { padding-bottom: 0; }
+.t-item:hover {
+  transform: translateX(var(--space-xs));
+}
+.t-item::before {
+  content: "";
+  position: absolute;
+  left: -32px;
+  top: var(--space-2xs);
+  width: 11px;
+  height: 11px;
+  border: 2px solid var(--cyan);
+  background: var(--bg-0);
+  transition: box-shadow var(--transition-base);
+}
+.t-item:hover::before {
+  box-shadow: 0 0 0 4px var(--accent-glow-medium);
+}
+.t-item .t-years {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--accent);
+  margin-bottom: var(--space-xs);
+  display: block;
+}
+.t-item h3 {
+  font-size: 17px;
+  color: var(--paper);
+  margin-bottom: var(--space-2xs);
+}
+.t-item .t-org {
+  color: var(--paper-dim);
+  font-size: 14px;
+}

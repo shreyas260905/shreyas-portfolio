@@ -1,0 +1,115 @@
+/* ==========================================================================
+   COMPONENTS — full-page overlays and small reusable widgets
+   (preloader, scroll progress bar, background canvas, cursor spotlight,
+   back-to-top button)
+   ========================================================================== */
+
+/* ---------- background canvas grid ---------- */
+#bg-canvas {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-bg);
+  pointer-events: none;
+}
+
+/* ---------- cursor spotlight ---------- */
+#spotlight {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-spotlight);
+  pointer-events: none;
+  background: radial-gradient(600px circle at var(--mx) var(--my), rgba(255, 255, 255, 0.012), transparent 70%);
+  transition: background 0.1s ease-out;
+}
+
+/* ---------- preloader ---------- */
+#preloader {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-preloader);
+  background: var(--bg-0);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: opacity var(--transition-slow), visibility var(--transition-slow);
+}
+#preloader.done {
+  opacity: 0;
+  visibility: hidden;
+}
+.pl-label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.25em;
+  color: var(--paper-dim);
+  text-transform: uppercase;
+  margin-bottom: var(--space-md);
+}
+.pl-bar {
+  width: 220px;
+  height: 2px;
+  background: var(--grid-line-strong);
+  position: relative;
+  overflow: hidden;
+}
+.pl-fill {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 0%;
+  background: var(--cyan);
+  transition: width 0.25s ease-out;
+}
+.pl-pct {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--cyan);
+  margin-top: var(--space-sm);
+  letter-spacing: 0.1em;
+}
+
+/* ---------- scroll progress bar ---------- */
+#scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 2px;
+  background: var(--cyan);
+  z-index: var(--z-progress);
+  width: 0%;
+  transition: width 0.1s linear;
+  box-shadow: 0 0 8px var(--cyan);
+}
+
+/* ---------- back to top ---------- */
+#to-top {
+  position: fixed;
+  bottom: 28px;
+  right: 28px;
+  z-index: var(--z-totop);
+  width: 42px;
+  height: 42px;
+  border: var(--border-hairline);
+  background: rgba(8, 9, 10, 0.8);
+  backdrop-filter: blur(6px);
+  color: var(--cyan);
+  font-family: var(--font-mono);
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--transition-base), transform var(--transition-fast), background var(--transition-fast);
+}
+#to-top.show {
+  opacity: 1;
+  pointer-events: auto;
+}
+#to-top:hover {
+  background: var(--accent-glow-medium);
+  transform: translateY(-2px);
+}

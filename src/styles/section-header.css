@@ -1,0 +1,26 @@
+/* ==========================================================================
+   SECTION HEADER
+   The eyebrow + title + rule pattern reused at the top of every section.
+   ========================================================================== */
+
+section {
+  padding: var(--space-section) 0;
+  position: relative;
+}
+
+.section-head {
+  margin-bottom: var(--space-2xl);
+}
+.section-head .tag {
+  display: block;
+  margin-bottom: var(--space-xs);
+}
+.section-head h2 {
+  font-size: clamp(28px, 4vw, 42px);
+  color: var(--paper);
+}
+.section-head .rule {
+  margin-top: var(--space-md);
+  height: 1px;
+  background: linear-gradient(90deg, var(--cyan) 0%, transparent 60%);
+}

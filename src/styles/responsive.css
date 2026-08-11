@@ -1,0 +1,151 @@
+/* ==========================================================================
+   RESPONSIVE SCALE
+   Natural mobile/tablet sizing — no transform zoom.
+   Desktop (>1100px) uses default tokens unchanged.
+   ========================================================================== */
+
+/* ---------- Tablet: 701px – 1100px ---------- */
+@media (max-width: 1100px) {
+  :root {
+    --content-padding-inline: 24px;
+    --space-section: 88px;
+  }
+}
+
+/* ---------- Mobile: ≤700px ---------- */
+@media (max-width: 700px) {
+  :root {
+    --content-padding-inline: 18px;
+    --space-section: 72px;
+  }
+
+  .hero {
+    padding-top: 88px;
+    padding-bottom: 48px;
+    min-height: 100svh;
+  }
+
+  .hero-eyebrow {
+    font-size: 11px;
+    letter-spacing: 0.14em;
+  }
+
+  .hero h1 {
+    font-size: clamp(48px, 13vw, 72px);
+    margin-bottom: var(--space-md);
+  }
+
+  .hero-sub {
+    font-size: clamp(17px, 4.5vw, 19px);
+    max-width: none;
+    line-height: 1.55;
+    margin-bottom: var(--space-xl);
+  }
+
+  .titleblock {
+    max-width: none;
+  }
+
+  .titleblock .tb-label {
+    font-size: 10px;
+  }
+
+  .titleblock .tb-value {
+    font-size: 14px;
+  }
+
+  .scroll-cue {
+    left: var(--content-padding-inline);
+    bottom: 22px;
+  }
+
+  .section-head {
+    margin-bottom: var(--space-xl);
+  }
+
+  .section-head h2 {
+    font-size: clamp(32px, 9vw, 40px);
+  }
+
+  .section-head .tag {
+    font-size: 12px;
+  }
+
+  .about-text p {
+    font-size: 17px;
+    max-width: none;
+    line-height: 1.65;
+  }
+
+  .spec-row .v {
+    font-size: 12px;
+  }
+
+  .counter-cell {
+    padding: 22px var(--space-md);
+  }
+
+  .counter-num {
+    font-size: 32px;
+  }
+
+  .legend-cell {
+    padding: 22px var(--space-md);
+  }
+
+  .legend-cell h3 {
+    font-size: 16px;
+  }
+
+  .chip {
+    font-size: 12px;
+    padding: 6px 11px;
+  }
+
+  .project {
+    padding: var(--space-lg) var(--space-md);
+  }
+
+  .project-title {
+    font-size: 20px;
+  }
+
+  .project-desc {
+    font-size: 16px;
+    max-width: none;
+    line-height: 1.6;
+  }
+
+  .project-index {
+    font-size: 36px;
+  }
+
+  .cert-item h3,
+  .t-item h3 {
+    font-size: 16px;
+  }
+
+  .ach-item p,
+  .t-item .t-org {
+    font-size: 15px;
+    line-height: 1.55;
+  }
+
+  .timeline {
+    padding-left: var(--space-lg);
+  }
+
+  .contact-cell {
+    padding: 22px var(--space-md);
+  }
+
+  .contact-cell .tb-value {
+    font-size: 13px;
+    white-space: normal;
+  }
+
+  footer .wrap {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

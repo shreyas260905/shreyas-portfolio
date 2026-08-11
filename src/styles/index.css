@@ -1,0 +1,34 @@
+/* ==========================================================================
+   STYLE ENTRY POINT
+   Import order matters: tokens first, then base/reset, then shared
+   utilities and components, then one file per page section, in the
+   order they appear on the page.
+
+   To add a new section's styles: create src/styles/<section>.css and
+   add an @import line below, near the section it belongs with.
+   ========================================================================== */
+
+/* 1. Design tokens — always first */
+@import './tokens.css';
+
+/* 2. Base element defaults */
+@import './base.css';
+
+/* 3. Shared utilities & full-page components */
+@import './utilities.css';
+@import './components.css';
+
+/* 4. Page chrome */
+@import './nav.css';
+
+/* 5. Sections, top to bottom as they appear in index.html */
+@import './hero.css';
+@import './section-header.css';
+@import './about.css';
+@import './skills.css';
+@import './projects.css';
+@import './credentials.css';
+@import './education.css';
+@import './contact.css';
+@import './footer.css';
+@import './responsive.css';

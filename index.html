@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>J Sai Shreyas — Computer Science Engineer</title>
+  <meta name="description" content="Portfolio of J Sai Shreyas, Computer Science undergraduate building practical software and hardware prototypes.">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+
+  <!-- Fonts: the only external dependency this site has. See README.md
+       "External services" section if you want to self-host these instead. -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- ============== FULL-PAGE OVERLAYS ============== -->
+
+  <div id="scroll-progress"></div>
+  <canvas id="bg-canvas"></canvas>
+  <div id="spotlight"></div>
+
+  <!-- ============== NAV ============== -->
+  <nav>
+    <div class="wrap nav-inner">
+      <a href="#" class="nav-brand">J. SAI SHREYAS</a>
+      <div class="nav-end">
+        <ul class="nav-links">
+          <li><a href="#about">About</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#credentials">Certifications</a></li>
+          <li><a href="#education">Education</a></li>
+          <li><a href="#contact">Connect</a></li>
+        </ul>
+        <button type="button" class="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Open navigation menu">
+          <span class="nav-toggle-bar"></span>
+          <span class="nav-toggle-bar"></span>
+          <span class="nav-toggle-bar"></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <div id="nav-menu" class="nav-menu" aria-hidden="true">
+    <div class="nav-menu-backdrop"></div>
+    <div class="nav-menu-panel">
+      <div class="nav-menu-head">
+        <span class="nav-menu-label">Navigate</span>
+        <button type="button" class="nav-menu-close" aria-label="Close navigation menu">×</button>
+      </div>
+      <ul class="nav-menu-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#credentials">Certifications</a></li>
+        <li><a href="#education">Education</a></li>
+        <li><a href="#contact">Connect</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ============== HERO ============== -->
+  <header class="hero wrap">
+    <div class="hero-eyebrow">Computer Science Engineer</div>
+    <h1><span class="line"><span class="initial">J.</span> SAI</span><span class="line accent">SHREYAS</span></h1>
+
+
+    <p class="hero-sub">Curious, adaptable, and driven to learn. I enjoy solving problems, exploring new ideas, and turning what I learn into something useful.</p>
+
+    <div class="titleblock">
+      <div><span class="tb-label">Focus</span><span class="tb-value">AI, Database, SAP, Cloud</span></div>
+      <div><span class="tb-label">Location</span><span class="tb-value">Hyderabad, IN</span></div>
+      <div><span class="tb-label">Status</span><span class="tb-value">Pursuing • Class of 2027</span></div>
+    </div>
+
+    <div class="scroll-cue"><div class="line"></div> SCROLL</div>
+  </header>
+
+  <!-- ============== ABOUT ============== -->
+  <section id="about">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="tag">PROFILE</span>
+        <h2>About</h2>
+        <div class="rule"></div>
+      </div>
+
+      <div class="about-grid">
+        <div class="about-text reveal">
+          <p>CSE undergrad and ambitious fresher passionate about sharp communication, strategic execution, and thriving where tech meets real-world application. I love to work, learn fast, and build—using code as a tool, critical thinking as the framework, and strong decision-making to ship stuff that works.</p>
+        </div>
+        <div class="spec-list reveal">
+          <div class="spec-row"><span class="k">Education</span><span class="v">B.Tech CSE, 2023–27</span></div>
+          <div class="spec-row"><span class="k">CGPA</span><span class="v">7.43 / 10.0</span></div>
+          <div class="spec-row"><span class="k">Base</span><span class="v">Hyderabad, India</span></div>
+          <div class="spec-row"><span class="k">Open To</span><span class="v">Internships · Full-time opportunities</span></div>
+        </div>
+      </div>
+
+      <div class="counter-row reveal">
+        <div class="counter-cell"><div class="counter-num" data-target="3">0</div><div class="counter-label">Projects Done</div></div>
+        <div class="counter-cell"><div class="counter-num" data-target="3">0</div><div class="counter-label">Languages</div></div>
+        <div class="counter-cell"><div class="counter-num" data-target="2027">0</div><div class="counter-label">Graduating</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============== SKILLS ============== -->
+  <section id="skills">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="tag">KNOWLEDGE</span>
+        <h2>Technical Skills</h2>
+        <div class="rule"></div>
+      </div>
+
+      <div class="legend-grid reveal">
+        <div class="legend-cell">
+          <h3>Programming Languages</h3>
+          <div class="chip-row">
+            <span class="chip">C++</span><span class="chip">Java</span><span class="chip">Python</span>
+          </div>
+        </div>
+        <div class="legend-cell">
+          <h3>Web Technologies</h3>
+          <div class="chip-row">
+            <span class="chip">HTML</span><span class="chip">CSS</span>
+          </div>
+        </div>
+        <div class="legend-cell">
+          <h3>Database</h3>
+          <div class="chip-row">
+            <span class="chip">MySQL</span>
+          </div>
+        </div>
+        <div class="legend-cell">
+          <h3>Cloud &amp; DevOps</h3>
+          <div class="chip-row">
+            <span class="chip">AWS</span><span class="chip">Docker</span>
+          </div>
+        </div>
+        <div class="legend-cell">
+          <h3>Tools &amp; Technologies</h3>
+          <div class="chip-row">
+            <span class="chip">Git</span><span class="chip">GitHub</span>
+          </div>
+        </div>
+        <div class="legend-cell legend-cell--cse-core">
+          <h3>CSE Core</h3>
+          <div class="chip-row">
+            <span class="chip">Data Structures &amp; Algorithms (DSA)</span><span class="chip">Object-Oriented Programming</span><span class="chip">Operating Systems</span><span class="chip">Computer Networks</span><span class="chip">Software Engineering</span><span class="chip">Artificial Intelligence</span><span class="chip">Deep Learning</span><span class="chip">Natural Language Processing</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============== PROJECTS ============== -->
+  <section id="projects">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="tag">Build Log</span>
+        <h2>Projects</h2>
+        <div class="rule"></div>
+      </div>
+      <div class="project-grid reveal">
+
+        <div class="project" data-tilt>
+          <div class="project-index">01</div>
+          <div>
+            <span class="project-kicker">Machine Learning · Agriculture</span>
+            <h3 class="project-title">Crop Disease Detection System for Farmers</h3>
+            <p class="project-desc">An intelligent detection system using image processing and machine learning to identify crop diseases early, giving farmers timely recommendations for better crop management.</p>
+            <div class="impact-line">IMPACT — <b>Earlier disease detection</b>, helping farmers act before losses spread.</div>
+          </div>
+        </div>
+
+        <div class="project" data-tilt>
+          <div class="project-index">02</div>
+          <div>
+            <span class="project-kicker">Web Platform · EdTech</span>
+            <h3 class="project-title">Learn and Grow: A Skill Development Platform</h3>
+            <p class="project-desc">An online platform helping users build technical and professional skills through structured learning paths, with integrated resources and progress tracking.</p>
+            <div class="impact-line">IMPACT — <b>Improved engagement</b> through progress tracking tied to career development.</div>
+          </div>
+        </div>
+
+        <div class="project" data-tilt>
+          <div class="project-index">03</div>
+          <div>
+            <span class="project-kicker">Hardware · Renewable Energy</span>
+            <h3 class="project-title">Hydropower Electricity Generator</h3>
+            <p class="project-desc">A working prototype demonstrating renewable electricity generation from hydropower, focused on sustainable energy and efficient use of water resources.</p>
+            <div class="impact-line">IMPACT — <b>Functional prototype</b> proving out sustainable, low-cost generation.</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============== CREDENTIALS ============== -->
+  <section id="credentials">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="tag">Proof of Work</span>
+        <h2>Certifications &amp; Achievements</h2>
+        <div class="rule"></div>
+      </div>
+      <div class="split">
+        <div class="reveal">
+          <h3 class="split-heading">Certifications</h3>
+          <div class="cert-item">
+            <h3>SAP Certified Associate — Back-End Developer, ABAP Cloud</h3>
+            <div class="cert-meta">ISSUER // SAP</div>
+          </div>
+          <div class="cert-item">
+            <h3>DevCon Associate - Campus Edition (SAP ABAP on S/4HANA Technical Track)</h3>
+            <div class="cert-meta">ISSUER // Naxrita</div>
+          </div>
+          <div class="cert-item">
+            <h3>AI Fundamentals: Foundations for Understanding AI</h3>
+            <div class="cert-meta">ISSUER // IBM</div>
+          </div>
+          <div class="cert-item">
+            <h3>AWS Academy - Getting Started with DevOps</h3>
+            <div class="cert-meta">ISSUER // Amazon Web Services</div>
+          </div>
+          <div class="cert-item">
+            <h3>Cloud Computing - Elite Certification</h3>
+            <div class="cert-meta">ISSUER // NPTEL</div>
+          </div>
+        </div>
+
+        <div class="reveal">
+          <h3 class="split-heading">Achievements</h3>
+          <div class="ach-item"><span class="dot"></span><p>Attended the DATAVERSE 2.0 Workshop on Data Science at IIT Bombay.</p></div>
+          <div class="ach-item"><span class="dot"></span><p>Participated in Google DevFest, Hyderabad.</p></div>
+          <div class="ach-item"><span class="dot"></span><p>Competed in HACKATTACK-25, a 24-hour National Level Hackathon at Sreyas Institute of Engineering and Technology.</p></div>
+          <div class="ach-item"><span class="dot"></span><p>Competed in ZIGNASA '24 and '25, 24-hour National Level Hackathons at MLR Institute of Technology, with projects focused on MERN Full Stack development in '24 and UI/UX design in '25.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============== EDUCATION ============== -->
+  <section id="education">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="tag">Foundations</span>
+        <h2>Education</h2>
+        <div class="rule"></div>
+      </div>
+      <div class="timeline reveal">
+        <div class="t-item">
+          <span class="t-years">2023 — 2027</span>
+          <h3>B.Tech in Computer Science &amp; Engineering</h3>
+          <div class="t-org">MLR Institute of Technology, Hyderabad — CGPA 7.43 / 10.0</div>
+        </div>
+        <div class="t-item">
+          <span class="t-years">2021 — 2023</span>
+          <h3>Higher Secondary Education (MPC)</h3>
+          <div class="t-org">Sri Chaitanya Junior Kalasala, Ramanthapur, IDA Uppal, Hyderabad — 74%</div>
+        </div>
+        <div class="t-item">
+          <span class="t-years">Completed 2021</span>
+          <h3>Secondary School Certificate (CBSE)</h3>
+          <div class="t-org">St. Andrew's High School, Bowenpally, Hyderabad — 87%</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============== CONTACT ============== -->
+  <section id="contact">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="tag">CONNECT</span>
+        <h2>Get in Touch</h2>
+        <div class="rule"></div>
+      </div>
+      <div class="contact-block reveal">
+        <a class="contact-cell" href="mailto:shreyasjonnalagadda@gmail.com">
+          <span class="tb-label">Email</span>
+          <span class="tb-value">shreyasjonnalagadda@gmail.com</span>
+        </a>
+        <a class="contact-cell" href="tel:+919704158882">
+          <span class="tb-label">Phone</span>
+          <span class="tb-value">+91 97041 58882</span>
+        </a>
+        <a class="contact-cell" href="https://linkedin.com/in/shreyas-jon" target="_blank" rel="noopener noreferrer">
+          <span class="tb-label">LinkedIn</span>
+          <span class="tb-value">/in/shreyas-jon</span>
+        </a>
+        <a class="contact-cell" href="https://github.com/shreyas260905" target="_blank" rel="noopener noreferrer">
+          <span class="tb-label">GitHub</span>
+          <span class="tb-value">/shreyas260905</span>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============== FOOTER ============== -->
+  <footer>
+    <div class="wrap">
+      <p>© 2026 J SAI SHREYAS</p>
+      <p>DRAWN IN HYDERABAD, INDIA</p>
+    </div>
+  </footer>
+
+  <div id="to-top">↑</div>
+
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>

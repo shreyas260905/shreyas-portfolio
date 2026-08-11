@@ -1,0 +1,85 @@
+/* ==========================================================================
+   ABOUT
+   ========================================================================== */
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  gap: var(--space-2xl);
+  align-items: start;
+}
+/* --bp-tablet: 800px */
+@media (max-width: 800px) {
+  .about-grid { grid-template-columns: 1fr; }
+}
+
+.about-text p {
+  color: var(--paper-dim);
+  font-size: 16px;
+  margin-bottom: var(--space-md);
+  max-width: 56ch;
+}
+.about-text p strong {
+  color: var(--paper);
+  font-weight: 600;
+}
+
+.spec-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  border-top: var(--border-hairline);
+}
+.spec-row {
+  display: flex;
+  justify-content: space-between;
+  padding: var(--space-sm) 0;
+  border-bottom: var(--border-hairline);
+  transition: padding-left 0.25s ease, background 0.25s;
+}
+.spec-row:hover {
+  padding-left: var(--space-xs);
+  background: rgba(242, 240, 234, 0.02);
+}
+.spec-row .k {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--paper-dim);
+}
+.spec-row .v {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--cyan-bright);
+  text-align: right;
+}
+
+/* ---------- animated counters ---------- */
+.counter-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--grid-line-strong);
+  border: var(--border-hairline);
+  margin-top: var(--space-xl);
+}
+.counter-cell {
+  background: var(--bg-0);
+  padding: 26px var(--space-lg);
+  text-align: center;
+}
+.counter-num {
+  font-family: var(--font-mono);
+  font-size: 36px;
+  font-weight: 800;
+  color: var(--cyan);
+}
+.counter-label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--paper-dim);
+  margin-top: var(--space-2xs);
+}

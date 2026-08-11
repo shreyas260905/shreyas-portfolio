@@ -1,0 +1,78 @@
+/* ==========================================================================
+   CONTACT ("Correspondence")
+   ========================================================================== */
+
+.contact-block {
+  display: grid;
+  grid-template-columns: 1.35fr 0.85fr 0.9fr 0.9fr;
+  border: var(--border-hairline);
+}
+
+.contact-cell {
+  padding: 26px var(--space-md);
+  border-right: var(--border-hairline);
+  border-top: var(--border-hairline);
+  text-decoration: none;
+  display: block;
+  transition: background var(--transition-fast), transform 0.25s ease, border-color var(--transition-fast);
+  position: relative;
+  overflow: hidden;
+}
+
+.contact-cell:hover {
+  background: var(--accent-glow);
+  transform: translateX(var(--space-xs));
+}
+
+.contact-cell:hover .tb-value {
+  color: var(--paper);
+}
+
+.contact-cell:nth-child(-n+4) { border-top: none; }
+.contact-cell:nth-child(4n) { border-right: none; }
+
+/* Responsive adjustments for Tablet */
+@media (max-width: 900px) {
+  .contact-block {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .contact-cell:nth-child(4n) { border-right: var(--border-hairline); }
+  .contact-cell:nth-child(2n) { border-right: none; }
+  .contact-cell:nth-child(-n+2) { border-top: none; }
+  .contact-cell:nth-child(n+3) { border-top: var(--border-hairline); }
+}
+
+/* Responsive adjustments for Mobile */
+@media (max-width: 550px) {
+  .contact-block {
+    grid-template-columns: 1fr;
+  }
+  .contact-cell {
+    border-right: none;
+    border-top: var(--border-hairline);
+  }
+  .contact-cell:first-child {
+    border-top: none;
+  }
+}
+
+.contact-cell .tb-label {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0.1em;
+  color: var(--paper-dim);
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: var(--space-xs);
+}
+
+.contact-cell .tb-value {
+  font-family: var(--font-mono);
+  font-size: clamp(11px, 1vw, 13px);
+  color: var(--accent);
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  display: block;
+  transition: color var(--transition-fast);
+}
