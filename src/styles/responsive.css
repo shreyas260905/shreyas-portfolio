@@ -132,7 +132,7 @@
   }
 
   .timeline {
-    padding-left: var(--space-lg);
+    --timeline-gutter: var(--space-lg);
   }
 
   .contact-cell {
