@@ -51,10 +51,6 @@
     border-right: none;
     border-top: var(--border-hairline);
   }
-  /* Override tablet 2-column rule that removes border-top from EMAIL + PHONE */
-  .contact-cell:nth-child(-n+2) {
-    border-top: var(--border-hairline);
-  }
   .contact-cell:first-child {
     border-top: none;
   }
