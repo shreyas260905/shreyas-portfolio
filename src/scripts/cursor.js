@@ -1,73 +1,96 @@
 /**
- * Desktop-Only Custom Cursor & Magnetic Interactions
- * Creates a subtle dot cursor and magnetic responses over interactive elements.
- * Completely disabled on touch and mobile devices.
+ * Desktop-Only Custom Cursor — 4-dot trailing comet
+ * Main dot follows the pointer; three smaller dots trail with smooth lerp.
+ * Completely disabled on touch and coarse-pointer devices.
  */
 import { gsap } from 'gsap';
 
-function getToken(name) {
-  return getComputedStyle(document.documentElement).getPropertyValue(name).trim();
+const DOT_SIZES = [12, 9, 6, 4];
+const TRAIL_LERP = 0.38;
+
+function getAccentColor() {
+  return getComputedStyle(document.documentElement).getPropertyValue('--cyan').trim()
+    || getComputedStyle(document.documentElement).getPropertyValue('--accent').trim();
+}
+
+function createDot(size, color) {
+  const dot = document.createElement('div');
+  dot.className = 'custom-cursor-dot';
+  dot.style.width = `${size}px`;
+  dot.style.height = `${size}px`;
+  dot.style.background = color;
+  return dot;
 }
 
 export function initCustomCursor() {
   const isFinePointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
   if (!isFinePointer) return;
 
-  const accent = getToken('--accent');
+  document.documentElement.classList.add('has-custom-cursor');
 
   document.getElementById('custom-cursor-ring')?.remove();
+  document.getElementById('custom-cursor')?.remove();
+  document.getElementById('custom-cursor-trail')?.remove();
 
-  let dot = document.getElementById('custom-cursor');
+  const accent = getAccentColor();
+  const trail = document.createElement('div');
+  trail.id = 'custom-cursor-trail';
+  trail.setAttribute('aria-hidden', 'true');
 
-  if (!dot) {
-    dot = document.createElement('div');
-    dot.id = 'custom-cursor';
-    dot.style.cssText = `
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 11px;
-      height: 11px;
-      background: ${accent};
-      border-radius: 50%;
-      pointer-events: none;
-      z-index: 9999;
-      transform: translate(-50%, -50%);
-      opacity: 0;
-      transition: opacity 0.3s ease;
-    `;
-    document.body.appendChild(dot);
-  } else {
-    dot.style.width = '11px';
-    dot.style.height = '11px';
-    dot.style.background = accent;
-  }
+  const dots = DOT_SIZES.map((size) => {
+    const dot = createDot(size, accent);
+    trail.appendChild(dot);
+    return dot;
+  });
 
-  const xDot = gsap.quickTo(dot, 'x', { duration: 0.1, ease: 'power2.out' });
-  const yDot = gsap.quickTo(dot, 'y', { duration: 0.1, ease: 'power2.out' });
+  document.body.appendChild(trail);
 
+  const positions = DOT_SIZES.map(() => ({ x: -100, y: -100 }));
+  const mouse = { x: -100, y: -100 };
   let visible = false;
 
-  window.addEventListener('mousemove', (e) => {
+  const renderDots = () => {
+    positions[0].x = mouse.x;
+    positions[0].y = mouse.y;
+
+    for (let i = 1; i < DOT_SIZES.length; i += 1) {
+      positions[i].x += (positions[i - 1].x - positions[i].x) * TRAIL_LERP;
+      positions[i].y += (positions[i - 1].y - positions[i].y) * TRAIL_LERP;
+    }
+
+    dots.forEach((dot, index) => {
+      dot.style.transform = `translate3d(${positions[index].x}px, ${positions[index].y}px, 0) translate(-50%, -50%)`;
+    });
+  };
+
+  const tick = () => renderDots();
+  gsap.ticker.add(tick);
+
+  window.addEventListener('mousemove', (event) => {
+    mouse.x = event.clientX;
+    mouse.y = event.clientY;
+
     if (!visible) {
-      dot.style.opacity = '1';
+      dots.forEach((dot) => {
+        dot.style.opacity = '1';
+      });
       visible = true;
     }
-    xDot(e.clientX);
-    yDot(e.clientY);
   });
 
   document.addEventListener('mouseleave', () => {
-    dot.style.opacity = '0';
+    dots.forEach((dot) => {
+      dot.style.opacity = '0';
+    });
     visible = false;
   });
 
   const magneticEls = document.querySelectorAll('.scroll-cue, .nav-brand, .contact-cell');
   magneticEls.forEach((btn) => {
-    btn.addEventListener('mousemove', (e) => {
+    btn.addEventListener('mousemove', (event) => {
       const rect = btn.getBoundingClientRect();
-      const relX = e.clientX - rect.left - rect.width / 2;
-      const relY = e.clientY - rect.top - rect.height / 2;
+      const relX = event.clientX - rect.left - rect.width / 2;
+      const relY = event.clientY - rect.top - rect.height / 2;
 
       gsap.to(btn, {
         x: relX * 0.25,

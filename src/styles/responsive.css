@@ -133,6 +133,12 @@
 
   .timeline {
     --timeline-gutter: var(--space-lg);
+    --timeline-line-width: 2px;
+  }
+
+  .timeline::before {
+    background: #FFFFFF;
+    opacity: 1;
   }
 
   .contact-cell {
