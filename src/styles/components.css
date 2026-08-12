@@ -113,3 +113,11 @@
   background: var(--accent-glow-medium);
   transform: translateY(-2px);
 }
+
+/* ---------- custom four-dot cursor (desktop only) ---------- */
+@media (hover: hover) and (pointer: fine) {
+  html.has-custom-cursor,
+  html.has-custom-cursor * {
+    cursor: none !important;
+  }
+}
