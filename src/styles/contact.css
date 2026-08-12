@@ -54,6 +54,9 @@
   .contact-cell:first-child {
     border-top: none;
   }
+  .contact-cell:nth-child(2) {
+    border-top: var(--border-hairline);
+  }
 }
 
 .contact-cell .tb-label {
