@@ -4,19 +4,15 @@
 
 .timeline {
   position: relative;
-  --timeline-marker-size: 11px;
-  --timeline-line-width: 1.5px;
-  --timeline-gutter: var(--space-xl);
-  --timeline-axis: calc(var(--timeline-marker-size) / 2);
-  padding-left: var(--timeline-gutter);
+  padding-left: var(--space-xl);
 }
 .timeline::before {
   content: "";
   position: absolute;
-  left: calc(var(--timeline-axis) - var(--timeline-line-width) / 2);
+  left: 5px;
   top: var(--space-xs);
   bottom: var(--space-xs);
-  width: var(--timeline-line-width);
+  width: 1.5px;
   background: #B8B8B8;
 }
 
@@ -32,10 +28,10 @@
 .t-item::before {
   content: "";
   position: absolute;
-  left: calc(var(--timeline-axis) - var(--timeline-gutter) - var(--timeline-marker-size) / 2);
+  left: -32px;
   top: var(--space-2xs);
-  width: var(--timeline-marker-size);
-  height: var(--timeline-marker-size);
+  width: 11px;
+  height: 11px;
   border: 2px solid var(--cyan);
   background: var(--bg-0);
   transition: box-shadow var(--transition-base);
