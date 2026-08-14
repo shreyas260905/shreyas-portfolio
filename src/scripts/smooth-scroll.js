@@ -65,7 +65,14 @@ function handleAnchorClick(e) {
 export function initSmoothScroll() {
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  if (!prefersReducedMotion) {
+  // Lenis smooth scrolling is only used on desktop fine-pointer (mouse) devices.
+  // Touch devices (mobile/tablet) use native browser scrolling so that pinch-to-zoom,
+  // zoomed scrolling, and momentum scrolling all work with zero JavaScript interference.
+  const isTouchDevice =
+    window.matchMedia('(hover: none)').matches ||
+    window.matchMedia('(pointer: coarse)').matches;
+
+  if (!prefersReducedMotion && !isTouchDevice) {
     lenisInstance = new Lenis({
       duration: 1.1,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
@@ -73,7 +80,6 @@ export function initSmoothScroll() {
       gestureOrientation: 'vertical',
       smoothWheel: true,
       wheelMultiplier: 1,
-      touchMultiplier: 1.5,
     });
 
     lenisInstance.on('scroll', ScrollTrigger.update);

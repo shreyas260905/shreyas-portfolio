@@ -19,6 +19,15 @@
     --space-section: 72px;
   }
 
+  /* background-attachment:fixed is not supported correctly on mobile browsers
+     (iOS Safari, Android Chrome). It causes the background to clip at the
+     viewport edge, leaving a black rectangle visible during rapid scrolling.
+     Switch to 'scroll' so the background paints continuously behind the full
+     document on mobile. */
+  body {
+    background-attachment: scroll;
+  }
+
   .hero {
     padding-top: 88px;
     padding-bottom: 48px;
