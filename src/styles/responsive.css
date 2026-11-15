@@ -206,16 +206,62 @@
     --glass-blur: 8px;
   }
 
-  /* Disable the CSS will-change hint on project cards since tilt.js
-     already skips on touch; keeping it wastes a GPU layer. */
+  /* Disable tilt will-change on touch — tilt.js skips touch anyway */
   .project {
     will-change: auto;
   }
 
-  /* The floating cream glow is a large blurred element — on slow devices
-     it can cause repaints. Pause its animation; it still renders. */
+  /* Remove filter:blur from the cream glow on mobile.
+     filter on a position:fixed element forces a continuous GPU
+     compositing layer that repaints on every scroll frame.
+     The glow shape still renders via its radial-gradient background. */
   .atmosphere-glow--cream {
-    animation-play-state: paused;
+    filter: none;
+    animation: none;
+  }
+
+  /* Nav menu panel: cap blur to token value instead of hardcoded 26px */
+  .nav-menu-panel {
+    backdrop-filter: blur(var(--glass-blur));
+    -webkit-backdrop-filter: blur(var(--glass-blur));
+  }
+
+  /* Nav menu backdrop: cap blur */
+  .nav-menu-backdrop {
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+  }
+
+  /* Disable box-shadow on glass cards during scroll — re-enabled by :hover.
+     box-shadow on many elements forces layer promotion on mobile. */
+  .legend-cell,
+  .cert-item,
+  .contact-cell {
+    box-shadow: none;
+  }
+  .legend-cell:hover,
+  .cert-item:hover,
+  .contact-cell:hover {
+    box-shadow: var(--shadow-hover);
+  }
+
+  /* Disable the pinstripe mask on mobile — mask-image forces a separate
+     compositing layer on WebKit/Blink mobile that repaints during scroll */
+  .atmosphere-stripes {
+    mask-image: none;
+    -webkit-mask-image: none;
+    opacity: 0.6;
+  }
+
+  /* touch-action: pan-y lets the browser handle vertical scroll natively
+     without waiting for JS event handlers */
+  html, body {
+    touch-action: pan-y;
+  }
+
+  /* Ensure scroll momentum works correctly on iOS */
+  body {
+    -webkit-overflow-scrolling: touch;
   }
 }
 

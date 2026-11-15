@@ -38,6 +38,41 @@ body {
   color: var(--navy-deep);
 }
 
+/*
+ * Remove browser-default blue tap flash on all interactive elements.
+ * -webkit-tap-highlight-color is the source of the blue rectangular
+ * highlight on Android Chrome and iOS Safari when tapping links/buttons.
+ * Setting it to transparent on a and button covers every interactive
+ * element in one place.
+ */
+a,
+button {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/*
+ * Remove the browser-default blue outline on focus for touch interactions.
+ * We replace it with a custom :focus-visible style below so keyboard
+ * users still get a clear, designed focus indicator.
+ */
+a:focus,
+button:focus {
+  outline: none;
+}
+
+/*
+ * Custom focus-visible: coral ring for keyboard navigation.
+ * :focus-visible only fires for keyboard focus (Tab key), not touch/click,
+ * so this preserves full keyboard accessibility without showing any ring
+ * on tap interactions.
+ */
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--coral);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
 a {
   color: inherit;
 }

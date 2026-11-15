@@ -25,14 +25,18 @@ export function initScrollNarrative() {
   if (!sections.length) return;
 
   /* ------------------------------------------------------------------
-   * 1. Navbar scrolled state + progress bar
+   * 1. Navbar scrolled state + progress bar  (rAF-throttled)
    * ------------------------------------------------------------------ */
+  let scrollRafId = null;
   window.addEventListener('scroll', () => {
-    const doc      = document.documentElement;
-    const scrolled = doc.scrollTop / (doc.scrollHeight - doc.clientHeight) * 100;
-
-    if (progressBar) progressBar.style.width = scrolled + '%';
-    if (nav)         nav.classList.toggle('scrolled', doc.scrollTop > 50);
+    if (scrollRafId) return;
+    scrollRafId = requestAnimationFrame(() => {
+      scrollRafId = null;
+      const doc      = document.documentElement;
+      const scrolled = doc.scrollTop / (doc.scrollHeight - doc.clientHeight) * 100;
+      if (progressBar) progressBar.style.width = scrolled + '%';
+      if (nav)         nav.classList.toggle('scrolled', doc.scrollTop > 50);
+    });
   }, { passive: true });
 
   /* ------------------------------------------------------------------

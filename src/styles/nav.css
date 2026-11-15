@@ -44,6 +44,7 @@ nav .nav-inner {
   color: var(--cream);
   text-decoration: none;
   cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
   transition: color var(--transition-fast);
   flex-shrink: 0;
 }
@@ -70,6 +71,7 @@ nav .nav-inner {
   color: rgba(244, 237, 224, 0.72);
   padding: 8px 14px;
   border-radius: var(--radius-pill);
+  -webkit-tap-highlight-color: transparent;
   transition: color var(--transition-base), background var(--transition-base);
 }
 .nav-links a:hover {
@@ -97,6 +99,7 @@ nav .nav-inner {
   letter-spacing: -0.02em;
   text-decoration: none;
   color: rgba(244, 237, 224, 0.78);
+  -webkit-tap-highlight-color: transparent;
   transition: color var(--transition-base), background var(--transition-fast), padding-left var(--transition-fast);
 }
 .nav-menu-links a:hover,
@@ -130,6 +133,7 @@ nav .nav-inner {
   border: 1px solid var(--border-subtle);
   background: rgba(20, 33, 61, 0.45);
   cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
   flex-shrink: 0;
   transition: border-color var(--transition-fast), background var(--transition-fast);
 }
@@ -248,6 +252,7 @@ nav.scrolled .nav-inner {
   font-size: 22px;
   line-height: 1;
   cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -324,4 +329,43 @@ body.nav-open {
   .nav-end { gap: 0; }
   .nav-brand { font-size: 12px; max-width: calc(100% - 52px); }
   nav { width: calc(100% - 24px); top: 12px; }
+}
+
+/* ---------- Nav-specific focus-visible overrides ----------
+ * base.css sets a generic coral outline for a:focus-visible.
+ * Nav elements have their own border-radius shapes, so we
+ * override outline-offset and border-radius to match them.
+ * This keeps keyboard navigation clearly visible while
+ * matching the existing pill / rounded-square design language.
+ * ---------------------------------------------------------- */
+.nav-brand:focus-visible {
+  outline: 2px solid var(--coral);
+  outline-offset: 4px;
+  border-radius: var(--radius-pill);
+}
+
+.nav-links a:focus-visible {
+  outline: 2px solid var(--coral);
+  outline-offset: 2px;
+  border-radius: var(--radius-pill);
+}
+
+.nav-toggle:focus-visible {
+  outline: 2px solid var(--coral);
+  outline-offset: 2px;
+  border-radius: var(--radius-pill);
+}
+
+.nav-menu-close:focus-visible {
+  outline: 2px solid var(--coral);
+  outline-offset: 2px;
+  border-radius: var(--radius-pill);
+}
+
+.nav-menu-links a:focus-visible {
+  outline: 2px solid var(--coral);
+  outline-offset: 2px;
+  border-radius: var(--radius-md);
+  /* Override the generic hover background so focus is clearly distinct */
+  background: rgba(255, 107, 91, 0.1);
 }
