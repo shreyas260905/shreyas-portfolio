@@ -1,7 +1,5 @@
 /* ==========================================================================
    BASE / RESET
-   Global element defaults. No component-specific rules here.
-   Background: pure black (#000000) with no gradients — 2026-01-14
    ========================================================================== */
 
 * {
@@ -12,14 +10,16 @@
 
 html {
   min-height: 100%;
-  background-color: var(--bg-0);
+  background-color: #0a1222;
+  scroll-behavior: smooth;
 }
 
 body {
-  background-color: var(--bg-0);
-  color: var(--paper);
+  background-color: transparent;
+  color: var(--cream);
   font-family: var(--font-sans);
-  line-height: 1.6;
+  font-weight: 400;
+  line-height: 1.65;
   overflow-x: hidden;
   cursor: default;
 }
@@ -34,8 +34,8 @@ body {
 }
 
 ::selection {
-  background: var(--cyan);
-  color: var(--bg-0);
+  background: var(--coral);
+  color: var(--navy-deep);
 }
 
 a {
@@ -43,7 +43,13 @@ a {
 }
 
 h1, h2, h3 {
-  font-family: var(--font-mono);
-  font-weight: 700;
-  letter-spacing: -0.01em;
+  font-family: var(--font-display);
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  line-height: 1.12;
+}
+
+em {
+  font-style: normal;
+  color: var(--coral);
 }

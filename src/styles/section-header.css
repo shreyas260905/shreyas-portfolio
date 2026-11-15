@@ -1,6 +1,5 @@
 /* ==========================================================================
    SECTION HEADER
-   The eyebrow + title + rule pattern reused at the top of every section.
    ========================================================================== */
 
 section {
@@ -11,16 +10,39 @@ section {
 .section-head {
   margin-bottom: var(--space-2xl);
 }
+
 .section-head .tag {
-  display: block;
-  margin-bottom: var(--space-xs);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
 }
+.section-head .tag::before {
+  content: "";
+  display: inline-block;
+  width: 20px;
+  height: 2px;
+  background: var(--coral);
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+
 .section-head h2 {
-  font-size: clamp(28px, 4vw, 42px);
-  color: var(--paper);
+  font-size: clamp(38px, 4.8vw, 60px);
+  font-weight: 500;
+  letter-spacing: -0.045em;
+  color: var(--cream);
+  line-height: 1.0;
 }
+
 .section-head .rule {
-  margin-top: var(--space-md);
-  height: 1px;
-  background: linear-gradient(90deg, var(--cyan) 0%, transparent 60%);
+  margin-top: 16px;
+  height: 2px;
+  width: 72px;
+  border-radius: var(--radius-pill);
+  background: linear-gradient(90deg, var(--coral) 0%, rgba(255, 107, 91, 0.0) 100%);
+  transform-origin: left center;
 }

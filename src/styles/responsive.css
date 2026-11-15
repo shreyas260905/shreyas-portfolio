@@ -1,166 +1,232 @@
 /* ==========================================================================
    RESPONSIVE SCALE
-   Natural mobile/tablet sizing — no transform zoom.
-   Desktop (>1100px) uses default tokens unchanged.
    ========================================================================== */
 
-/* ---------- Tablet: 701px – 1100px ---------- */
 @media (max-width: 1100px) {
   :root {
     --content-padding-inline: 24px;
-    --space-section: 88px;
+    --space-section: 96px;
   }
 }
 
-/* ---------- Mobile: ≤700px ---------- */
+/* ---- Tablet ---- */
+@media (max-width: 1024px) {
+  .contact-block {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 900px) {
+  .legend-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .project {
+    grid-template-columns: 1fr;
+    gap: var(--space-sm);
+    padding: 26px 24px 26px 26px;
+  }
+  .project-index {
+    display: none;
+  }
+}
+
+@media (max-width: 800px) {
+  .about-grid {
+    grid-template-columns: 1fr;
+    padding: 26px 22px;
+    gap: var(--space-lg);
+  }
+  .split {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ---- Mobile ---- */
 @media (max-width: 700px) {
   :root {
     --content-padding-inline: 18px;
-    --space-section: 72px;
+    --space-section: 76px;
   }
 
-  /* background-attachment:fixed is not supported correctly on mobile browsers
-     (iOS Safari, Android Chrome). It causes the background to clip at the
-     viewport edge, leaving a black rectangle visible during rapid scrolling.
-     Switch to 'scroll' so the background paints continuously behind the full
-     document on mobile. */
   body {
     background-attachment: scroll;
   }
 
+  /* Hero */
   .hero {
-    padding-top: 88px;
-    padding-bottom: 48px;
-    min-height: 100svh;
+    padding-top: 108px;
+    padding-bottom: 36px;
+    min-height: auto;
   }
-
   .hero-eyebrow {
     font-size: 11px;
-    letter-spacing: 0.14em;
+    letter-spacing: 0.16em;
+    margin-bottom: var(--space-lg);
   }
-
   .hero h1 {
-    font-size: clamp(48px, 13vw, 72px);
-    margin-bottom: var(--space-md);
+    font-size: clamp(48px, 14.5vw, 70px);
+    margin-bottom: var(--space-lg);
   }
-
   .hero-sub {
-    font-size: clamp(17px, 4.5vw, 19px);
+    font-size: 16px;
     max-width: none;
-    line-height: 1.55;
+    line-height: 1.68;
     margin-bottom: var(--space-xl);
   }
-
   .titleblock {
     max-width: none;
   }
-
   .titleblock .tb-label {
     font-size: 10px;
   }
-
   .titleblock .tb-value {
     font-size: 14px;
   }
-
   .scroll-cue {
-    left: var(--content-padding-inline);
-    bottom: 22px;
+    padding-top: 36px;
   }
 
+  /* Section headers */
   .section-head {
     margin-bottom: var(--space-xl);
   }
-
   .section-head h2 {
-    font-size: clamp(32px, 9vw, 40px);
+    font-size: clamp(32px, 9.5vw, 44px);
   }
 
-  .section-head .tag {
-    font-size: 12px;
-  }
-
+  /* About */
   .about-text p {
-    font-size: 17px;
+    font-size: 16px;
     max-width: none;
-    line-height: 1.65;
   }
-
+  .spec-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 3px;
+  }
   .spec-row .v {
-    font-size: 12px;
+    text-align: left;
+    font-size: 14px;
   }
-
   .counter-cell {
     padding: 22px var(--space-md);
   }
-
   .counter-num {
-    font-size: 32px;
+    font-size: 36px;
   }
 
+  /* Skills */
+  .legend-grid {
+    grid-template-columns: 1fr;
+  }
   .legend-cell {
     padding: 22px var(--space-md);
   }
 
-  .legend-cell h3 {
-    font-size: 16px;
-  }
-
-  .chip {
-    font-size: 12px;
-    padding: 6px 11px;
-  }
-
+  /* Projects */
   .project {
-    padding: var(--space-lg) var(--space-md);
+    grid-template-columns: 1fr;
+    gap: var(--space-sm);
+    padding: 22px 20px 22px 22px;
   }
-
+  .project-index {
+    display: none;
+  }
   .project-title {
     font-size: 20px;
   }
-
   .project-desc {
-    font-size: 16px;
+    font-size: 15px;
     max-width: none;
-    line-height: 1.6;
   }
 
-  .project-index {
-    font-size: 36px;
-  }
-
+  /* Credentials */
   .cert-item h3,
   .t-item h3 {
-    font-size: 16px;
+    font-size: 15px;
   }
-
   .ach-item p,
   .t-item .t-org {
-    font-size: 15px;
-    line-height: 1.55;
+    font-size: 14px;
   }
 
+  /* Education */
   .timeline {
-    --timeline-gutter: var(--space-lg);
-    --timeline-line-width: 2px;
+    --timeline-gutter: 28px;
+    padding: 24px 18px 24px calc(var(--timeline-gutter) + 14px);
   }
-
   .timeline::before {
-    background: #FFFFFF;
-    opacity: 1;
+    left: calc(14px + var(--timeline-axis));
   }
 
+  /* Contact */
+  .contact-block {
+    grid-template-columns: repeat(2, 1fr);
+  }
   .contact-cell {
-    padding: 22px var(--space-md);
+    min-height: 0;
+    padding: 20px 16px;
   }
-
   .contact-cell .tb-value {
-    font-size: 13px;
-    white-space: normal;
+    font-size: 14px;
   }
 
+  /* Footer */
   footer .wrap {
     flex-direction: column;
     align-items: flex-start;
+  }
+
+  /* Back-to-top */
+  #to-top {
+    right: 16px;
+    bottom: 16px;
+  }
+}
+
+/* ---- Small mobile ---- */
+@media (max-width: 480px) {
+  .contact-block {
+    grid-template-columns: 1fr;
+  }
+  .counter-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ---- Coarse-pointer / mobile: reduce backdrop-filter cost ---- */
+/*
+ * On touch/mobile devices the browser composites every backdrop-filter
+ * element separately. Reducing blur from 14px to 8px halves the GPU
+ * work while remaining visually imperceptible at typical phone viewing
+ * distances. The glass appearance is preserved.
+ */
+@media (hover: none), (pointer: coarse) {
+  :root {
+    --glass-blur: 8px;
+  }
+
+  /* Disable the CSS will-change hint on project cards since tilt.js
+     already skips on touch; keeping it wastes a GPU layer. */
+  .project {
+    will-change: auto;
+  }
+
+  /* The floating cream glow is a large blurred element — on slow devices
+     it can cause repaints. Pause its animation; it still renders. */
+  .atmosphere-glow--cream {
+    animation-play-state: paused;
+  }
+}
+
+/* ---- prefers-reduced-motion: disable all transitions & animations ---- */
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+  .atmosphere-glow--cream {
+    animation: none !important;
   }
 }

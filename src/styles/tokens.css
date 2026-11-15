@@ -1,56 +1,58 @@
 /* ==========================================================================
    DESIGN TOKENS
-   Single source of truth for the visual language of the site.
-   Change a value here and it propagates everywhere it's used.
-   See DESIGN_SYSTEM.md for the full rationale behind these choices.
+   Navy, cream, and coral. Change a value here and it propagates
+   everywhere it's referenced. See DESIGN_SYSTEM.md.
    ========================================================================== */
 
 :root {
-  /* ---------- Color: surfaces ---------- */
-  --bg-0: #000000;              /* primary background — pitch black (dominant) */
-  --bg-page-grey-a: #0d0d0d;    /* subtle depth — page gradient */
-  --bg-page-grey-b: #121212;    /* subtle depth — page gradient */
-  --bg-page-grey-c: #151515;    /* subtle depth — page gradient */
-  --bg-1: #0a0b0c;              /* graphite surface — cards, panels */
-  --bg-2: #111315;              /* graphite raised — hover, elevated surfaces */
+  /* ---------- Color: palette ---------- */
+  --navy: #14213D;
+  --cream: #F4EDE0;
+  --coral: #FF6B5B;
 
-  /* ---------- Color: borders / grid ---------- */
-  --border: #1a1c1e;            /* structural borders, component boundaries */
-  --border-muted: #0d0e0f;      /* subtle divisions, background grid */
-  --grid-line: rgba(12, 14, 16, 0.22);           /* extremely faint grid hairline */
-  --grid-line-strong: rgba(24, 27, 30, 0.45);    /* visible hairline / card dividers */
+  --navy-deep: #0B1428;
+  --navy-dark: #101C35;
+  --cream-light: #FAF7F0;
+  --cream-muted: #D8D0C3;
+  --coral-hover: #FF8173;
+  --border-subtle: rgba(244, 237, 224, 0.16);
 
-  /* ---------- Color: accent (electric blue — use selectively) ---------- */
-  --accent: #36B8FF;            /* primary interactive accent */
-  --accent-glow: rgba(255, 255, 255, 0.015);       /* subtle neutral glow — not blue */
-  --accent-glow-medium: rgba(54, 184, 255, 0.12);
-  --accent-glow-strong: rgba(54, 184, 255, 0.20);
+  /* ---------- Color: surfaces (legacy names kept for existing selectors) ---------- */
+  --bg-0: var(--navy);
+  --bg-page-grey-a: var(--navy-deep);
+  --bg-page-grey-b: var(--navy-dark);
+  --bg-page-grey-c: #182848;
+  --bg-1: var(--navy-dark);
+  --bg-2: #182744;
 
-  /* Legacy aliases — existing styles reference these names */
-  --cyan: var(--accent);
-  --cyan-bright: var(--accent);
+  --border: var(--border-subtle);
+  --border-muted: rgba(244, 237, 224, 0.08);
+  --grid-line: rgba(244, 237, 224, 0.06);
+  --grid-line-strong: rgba(244, 237, 224, 0.14);
 
-  /* ---------- Color: text ---------- */
-  --paper: #F2F0EA;             /* warm white — headings, primary text */
-  --paper-dim: #9A9DA1;         /* secondary text — body, metadata */
+  --accent: var(--coral);
+  --accent-glow: rgba(255, 107, 91, 0.12);
+  --accent-glow-medium: rgba(255, 107, 91, 0.18);
+  --accent-glow-strong: rgba(255, 107, 91, 0.28);
 
-  /* ---------- LAU-7 (3D core) ---------- */
-  --lau7-graphite: var(--bg-1);
-  --lau7-steel: var(--bg-2);
-  --lau7-highlight: var(--paper);
-  --lau7-emissive: var(--accent);
-  --lau7-emissive-glow: var(--accent-glow);
+  --cyan: var(--coral);
+  --cyan-bright: var(--coral-hover);
 
-  /* z-index: LAU-7 canvas shares --z-bg with 2D grid (DOM order stacks grid above) */
+  --paper: var(--cream);
+  --paper-dim: var(--cream-muted);
+
+  --glass-bg: rgba(20, 33, 61, 0.55);
+  --glass-bg-strong: rgba(10, 18, 40, 0.74);
+  --glass-blur: 14px;
+  --shadow-soft: 0 20px 54px rgba(4, 8, 18, 0.38);
+  --shadow-hover: 0 28px 70px rgba(4, 8, 18, 0.5);
 
   /* ---------- Typography ---------- */
-  --font-mono: 'JetBrains Mono', 'SFMono-Regular', Consolas, monospace;
-  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-display: 'Manrope', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-sans: 'Inter', 'Manrope', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: 'Manrope', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
 
-  /* ---------- Spacing scale ----------
-     Use these for anything that repeats across components.
-     One-off / component-specific sizes (e.g. a 44px numeral) stay local
-     to that component's stylesheet — see DESIGN_SYSTEM.md. */
+  /* ---------- Spacing scale ---------- */
   --space-2xs: 4px;
   --space-xs: 8px;
   --space-sm: 12px;
@@ -59,25 +61,26 @@
   --space-xl: 32px;
   --space-2xl: 48px;
   --space-3xl: 64px;
-  --space-section: 110px;        /* vertical padding for full page sections */
+  --space-section: 120px;
 
-  /* ---------- Radius ----------
-     The whole site is intentionally hard-edged (blueprint / schematic
-     aesthetic). Kept as a token so a future direction can round things
-     globally by changing one value. */
+  /* ---------- Radius ---------- */
+  --radius-sm: 12px;
+  --radius-md: 18px;
+  --radius-lg: 28px;
+  --radius-pill: 999px;
   --radius-none: 0px;
 
   /* ---------- Borders ---------- */
-  --border-hairline: 1px solid var(--border);
+  --border-hairline: 1px solid var(--border-subtle);
 
   /* ---------- Motion ---------- */
   --transition-fast: 0.2s ease;
-  --transition-base: 0.3s ease;
+  --transition-base: 0.35s cubic-bezier(0.16, 0.84, 0.44, 1);
   --transition-slow: 0.6s ease;
   --ease-out-expo: cubic-bezier(0.16, 0.84, 0.44, 1);
 
   /* ---------- Layout ---------- */
-  --content-max-width: 1100px;
+  --content-max-width: 1120px;
   --content-padding-inline: 32px;
 
   /* ---------- Z-index scale ---------- */
@@ -90,18 +93,13 @@
   --z-progress: 100;
   --z-preloader: 200;
 
-  /* ---------- Cursor spotlight position ----------
-     Updated live by src/scripts/background-grid.js */
   --mx: 50%;
   --my: 50%;
 }
 
 /* ---------- Breakpoints (reference only) ----------
-   CSS custom properties cannot be used inside @media queries, so these
-   are documented here and used as literals in each stylesheet. Keep any
-   new breakpoints consistent with this list.
-
-   --bp-tablet: 800px   (about grid, split layouts stack)
-   --bp-mobile: 700px   (nav, projects, contact grid stack)
-   --bp-small:  640px   (titleblock grid drops to 2 columns)
+   --bp-nav:    920px
+   --bp-tablet: 800px
+   --bp-mobile: 700px
+   --bp-small:  640px
 */

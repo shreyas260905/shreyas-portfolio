@@ -79,7 +79,7 @@ export function initNavMenu() {
     }
   });
 
-  window.matchMedia('(min-width: 701px)').addEventListener('change', (e) => {
+  window.matchMedia('(min-width: 921px)').addEventListener('change', (e) => {
     if (e.matches && (menu.classList.contains('open') || menu.classList.contains('is-closing'))) {
       clearCloseTimer();
       menu.classList.remove('open', 'is-closing');

@@ -2,7 +2,7 @@
   "name": "shreyas-portfolio",
   "private": true,
   "version": "1.0.0",
-  "description": "Personal portfolio site for J Sai Shreyas — blueprint/schematic themed, built with vanilla HTML, CSS and JS on Vite.",
+  "description": "Personal portfolio site for J Sai Shreyas — navy, cream, and coral, built with vanilla HTML, CSS and JS on Vite.",
   "type": "module",
   "scripts": {
     "dev": "vite",

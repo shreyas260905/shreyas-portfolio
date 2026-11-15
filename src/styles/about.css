@@ -4,82 +4,133 @@
 
 .about-grid {
   display: grid;
-  grid-template-columns: 1.3fr 1fr;
+  grid-template-columns: 1.35fr 0.9fr;
   gap: var(--space-2xl);
   align-items: start;
+  padding: 36px 36px 32px;
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  border: 1px solid rgba(244, 237, 224, 0.14);
+  border-top: 3px solid var(--coral);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-soft);
+  position: relative;
+  overflow: hidden;
+  contain: layout style;
 }
-/* --bp-tablet: 800px */
+
+/* Subtle coral glow bleed behind the panel */
+.about-grid::before {
+  content: "";
+  position: absolute;
+  top: -40px;
+  right: -40px;
+  width: 280px;
+  height: 280px;
+  background: radial-gradient(circle, rgba(255, 107, 91, 0.08) 0%, transparent 70%);
+  pointer-events: none;
+  border-radius: 50%;
+}
+
 @media (max-width: 800px) {
-  .about-grid { grid-template-columns: 1fr; }
+  .about-grid {
+    grid-template-columns: 1fr;
+    padding: 28px 22px;
+    gap: var(--space-lg);
+  }
 }
 
 .about-text p {
-  color: var(--paper-dim);
-  font-size: 16px;
-  margin-bottom: var(--space-md);
+  color: rgba(212, 204, 190, 0.9);
+  font-size: 17px;
+  line-height: 1.78;
+  margin-bottom: 0;
   max-width: 56ch;
 }
 .about-text p strong {
-  color: var(--paper);
+  color: var(--cream);
   font-weight: 600;
 }
 
+/* Spec / details table */
 .spec-list {
   display: flex;
   flex-direction: column;
-  gap: 0;
-  border-top: var(--border-hairline);
+  border-radius: var(--radius-md);
+  background: rgba(8, 14, 28, 0.38);
+  border: 1px solid rgba(244, 237, 224, 0.1);
+  overflow: hidden;
 }
 .spec-row {
   display: flex;
   justify-content: space-between;
-  padding: var(--space-sm) 0;
-  border-bottom: var(--border-hairline);
-  transition: padding-left 0.25s ease, background 0.25s;
+  gap: var(--space-md);
+  padding: 14px 16px;
+  border-bottom: 1px solid rgba(244, 237, 224, 0.08);
+  transition: background 0.25s ease;
 }
-.spec-row:hover {
-  padding-left: var(--space-xs);
-  background: rgba(242, 240, 234, 0.02);
-}
+.spec-row:last-child { border-bottom: none; }
+.spec-row:hover { background: rgba(255, 107, 91, 0.05); }
 .spec-row .k {
-  font-family: var(--font-mono);
+  font-family: var(--font-display);
   font-size: 11px;
-  letter-spacing: 0.08em;
+  font-weight: 600;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--paper-dim);
+  color: var(--coral);
 }
 .spec-row .v {
-  font-family: var(--font-mono);
-  font-size: 13px;
-  color: var(--cyan-bright);
+  font-family: var(--font-sans);
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--cream);
   text-align: right;
 }
 
-/* ---------- animated counters ---------- */
+/* Counter stat row */
 .counter-row {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 1px;
-  background: var(--grid-line-strong);
-  border: var(--border-hairline);
-  margin-top: var(--space-xl);
+  gap: 14px;
+  margin-top: var(--space-lg);
 }
 .counter-cell {
-  background: var(--bg-0);
-  padding: 26px var(--space-lg);
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  border: 1px solid rgba(244, 237, 224, 0.14);
+  border-top: 2px solid rgba(255, 107, 91, 0.45);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-soft);
+  padding: 28px var(--space-lg);
   text-align: center;
+  transition: transform var(--transition-base), border-color var(--transition-base), box-shadow var(--transition-base);
+  contain: layout style;
+}
+.counter-cell:hover {
+  transform: translateY(-5px);
+  border-color: rgba(255, 107, 91, 0.7);
+  box-shadow: 0 24px 56px rgba(255, 107, 91, 0.12);
 }
 .counter-num {
-  font-family: var(--font-mono);
-  font-size: 36px;
-  font-weight: 800;
-  color: var(--cyan);
+  font-family: var(--font-display);
+  font-size: 44px;
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  color: var(--coral);
+  line-height: 1;
 }
 .counter-label {
-  font-family: var(--font-mono);
-  font-size: 10px;
-  letter-spacing: 0.1em;
+  font-family: var(--font-display);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--paper-dim);
-  margin-top: var(--space-2xs);
+  color: var(--cream-muted);
+  margin-top: 8px;
+}
+
+@media (max-width: 640px) {
+  .counter-row { grid-template-columns: 1fr; }
 }

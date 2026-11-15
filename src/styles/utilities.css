@@ -1,8 +1,5 @@
 /* ==========================================================================
    UTILITIES
-   Reusable structural classes shared across multiple sections:
-   .wrap (content container), .tag (eyebrow label), .sheet (bracketed
-   card), .reveal (scroll-triggered fade-up).
    ========================================================================== */
 
 .wrap {
@@ -13,26 +10,28 @@
   z-index: var(--z-content);
 }
 
-/* ---------- eyebrow label ---------- */
 .tag {
-  font-family: var(--font-mono);
+  font-family: var(--font-display);
   font-size: 11px;
-  letter-spacing: 0.14em;
+  font-weight: 700;
+  letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: var(--cyan);
+  color: var(--coral);
 }
 
-/* ---------- scroll reveal ---------- */
+/* Fade-up reveal on scroll */
 .reveal {
   opacity: 0;
-  transform: translateY(24px);
-  transition: opacity 0.8s var(--ease-out-expo), transform 0.8s var(--ease-out-expo);
+  transform: translateY(22px);
+  transition: opacity 0.6s cubic-bezier(0.16, 0.84, 0.44, 1),
+              transform 0.6s cubic-bezier(0.16, 0.84, 0.44, 1);
 }
 .reveal.in {
   opacity: 1;
   transform: translateY(0);
 }
 
+/* Staggered children reveal */
 .reveal-stagger > * {
   opacity: 0;
   transform: translateY(18px);
@@ -43,38 +42,67 @@
   transform: translateY(0);
 }
 
-/* ---------- bracketed "sheet" card (corner-bracket hover device) ---------- */
-.sheet {
-  position: relative;
-  border: var(--border-hairline);
-  background: linear-gradient(180deg, rgba(242, 240, 234, 0.015), transparent 40%);
-}
-.sheet::before,
-.sheet::after,
-.sheet .bl,
-.sheet .br {
-  content: "";
-  position: absolute;
-  width: 16px;
-  height: 16px;
-  border-color: var(--cyan);
-  opacity: 0.6;
-  transition: opacity var(--transition-base), width var(--transition-base), height var(--transition-base);
-}
-.sheet::before { top: -1px; left: -1px; border-top: 2px solid var(--cyan); border-left: 2px solid var(--cyan); }
-.sheet::after  { top: -1px; right: -1px; border-top: 2px solid var(--cyan); border-right: 2px solid var(--cyan); }
-.sheet .bl     { bottom: -1px; left: -1px; border-bottom: 2px solid var(--cyan); border-left: 2px solid var(--cyan); }
-.sheet .br     { bottom: -1px; right: -1px; border-bottom: 2px solid var(--cyan); border-right: 2px solid var(--cyan); }
-.sheet:hover::before,
-.sheet:hover::after,
-.sheet:hover .bl,
-.sheet:hover .br {
-  opacity: 1;
-  width: 22px;
-  height: 22px;
+/* Glass surface utility */
+.glass {
+  background: rgba(20, 33, 61, 0.55);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(244, 237, 224, 0.14);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 20px 50px rgba(5, 10, 22, 0.32);
 }
 
-/* ---------- Lenis smooth scroll resets ---------- */
+/* Button base */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 50px;
+  padding: 0 26px;
+  border-radius: var(--radius-pill);
+  font-family: var(--font-display);
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  text-decoration: none;
+  border: 1px solid transparent;
+  transition:
+    background var(--transition-base),
+    color var(--transition-base),
+    border-color var(--transition-base),
+    transform var(--transition-base),
+    box-shadow var(--transition-base);
+}
+
+/* Primary — coral filled */
+.btn-primary {
+  background: var(--coral);
+  color: var(--navy-deep);
+  box-shadow: 0 10px 32px rgba(255, 107, 91, 0.28);
+}
+.btn-primary:hover {
+  background: var(--coral-hover);
+  color: var(--navy-deep);
+  transform: translateY(-2px);
+  box-shadow: 0 16px 40px rgba(255, 107, 91, 0.38);
+}
+
+/* Ghost — glass outline */
+.btn-ghost {
+  background: rgba(10, 18, 36, 0.45);
+  color: var(--cream);
+  border-color: rgba(244, 237, 224, 0.18);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+.btn-ghost:hover {
+  border-color: rgba(255, 107, 91, 0.6);
+  color: var(--cream-light);
+  background: rgba(255, 107, 91, 0.1);
+  transform: translateY(-2px);
+}
+
+/* Lenis integration */
 html.lenis, html.lenis body {
   height: auto;
 }
@@ -90,4 +118,3 @@ html.lenis, html.lenis body {
 .lenis.lenis-smooth iframe {
   pointer-events: none;
 }
-

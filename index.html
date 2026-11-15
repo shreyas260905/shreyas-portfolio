@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -10,15 +10,21 @@
   <!-- Fonts: the only external dependency this site has. See README.md
        "External services" section if you want to self-host these instead. -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
   <!-- ============== FULL-PAGE OVERLAYS ============== -->
 
+  <div class="atmosphere" aria-hidden="true">
+    <div class="atmosphere-base"></div>
+    <div class="atmosphere-stripes"></div>
+    <div class="atmosphere-glow atmosphere-glow--cream"></div>
+    <div class="atmosphere-vignette"></div>
+  </div>
   <div id="scroll-progress"></div>
   <canvas id="bg-canvas"></canvas>
-  <div id="spotlight"></div>
 
   <!-- ============== NAV ============== -->
   <nav>
@@ -80,7 +86,7 @@
   <!-- ============== ABOUT ============== -->
   <section id="about">
     <div class="wrap">
-      <div class="section-head reveal">
+      <div class="section-head">
         <span class="tag">PROFILE</span>
         <h2>About</h2>
         <div class="rule"></div>
@@ -103,13 +109,14 @@
         <div class="counter-cell"><div class="counter-num" data-target="3">0</div><div class="counter-label">Languages</div></div>
         <div class="counter-cell"><div class="counter-num" data-target="2027">0</div><div class="counter-label">Graduating</div></div>
       </div>
+
     </div>
   </section>
 
   <!-- ============== SKILLS ============== -->
   <section id="skills">
     <div class="wrap">
-      <div class="section-head reveal">
+      <div class="section-head">
         <span class="tag">KNOWLEDGE</span>
         <h2>Technical Skills</h2>
         <div class="rule"></div>
@@ -153,6 +160,7 @@
           </div>
         </div>
       </div>
+
     </div>
   </section>
 
@@ -160,7 +168,7 @@
   <!-- ============== PROJECTS ============== -->
   <section id="projects">
     <div class="wrap">
-      <div class="section-head reveal">
+      <div class="section-head">
         <span class="tag">Build Log</span>
         <h2>Projects</h2>
         <div class="rule"></div>
@@ -169,42 +177,60 @@
 
         <div class="project" data-tilt>
           <div class="project-index">01</div>
-          <div>
+          <div class="project-body">
             <span class="project-kicker">Machine Learning · Agriculture</span>
             <h3 class="project-title">Crop Disease Detection System for Farmers</h3>
             <p class="project-desc">An intelligent detection system using image processing and machine learning to identify crop diseases early, giving farmers timely recommendations for better crop management.</p>
+            <div class="project-tags">
+              <span class="project-tag">Python</span>
+              <span class="project-tag">Machine Learning</span>
+              <span class="project-tag">Image Processing</span>
+              <span class="project-tag">OpenCV</span>
+            </div>
             <div class="impact-line">IMPACT — <b>Earlier disease detection</b>, helping farmers act before losses spread.</div>
           </div>
         </div>
 
         <div class="project" data-tilt>
           <div class="project-index">02</div>
-          <div>
+          <div class="project-body">
             <span class="project-kicker">Web Platform · EdTech</span>
             <h3 class="project-title">Learn and Grow: A Skill Development Platform</h3>
             <p class="project-desc">An online platform helping users build technical and professional skills through structured learning paths, with integrated resources and progress tracking.</p>
+            <div class="project-tags">
+              <span class="project-tag">HTML</span>
+              <span class="project-tag">CSS</span>
+              <span class="project-tag">JavaScript</span>
+              <span class="project-tag">MySQL</span>
+            </div>
             <div class="impact-line">IMPACT — <b>Improved engagement</b> through progress tracking tied to career development.</div>
           </div>
         </div>
 
         <div class="project" data-tilt>
           <div class="project-index">03</div>
-          <div>
+          <div class="project-body">
             <span class="project-kicker">Hardware · Renewable Energy</span>
             <h3 class="project-title">Hydropower Electricity Generator</h3>
             <p class="project-desc">A working prototype demonstrating renewable electricity generation from hydropower, focused on sustainable energy and efficient use of water resources.</p>
+            <div class="project-tags">
+              <span class="project-tag">Hardware</span>
+              <span class="project-tag">Renewable Energy</span>
+              <span class="project-tag">Prototyping</span>
+            </div>
             <div class="impact-line">IMPACT — <b>Functional prototype</b> proving out sustainable, low-cost generation.</div>
           </div>
         </div>
 
       </div>
+
     </div>
   </section>
 
   <!-- ============== CREDENTIALS ============== -->
   <section id="credentials">
     <div class="wrap">
-      <div class="section-head reveal">
+      <div class="section-head">
         <span class="tag">Proof of Work</span>
         <h2>Certifications &amp; Achievements</h2>
         <div class="rule"></div>
@@ -232,6 +258,10 @@
             <h3>Cloud Computing - Elite Certification</h3>
             <div class="cert-meta">ISSUER // NPTEL</div>
           </div>
+          <div class="cert-item">
+            <h3>MePro Level 10</h3>
+            <div class="cert-meta">ISSUER // Pearson</div>
+          </div>
         </div>
 
         <div class="reveal">
@@ -243,13 +273,14 @@
           <div class="ach-item"><span class="dot"></span><p>Competed in ZIGNASA '24 and '25, 24-hour National Level Hackathons at MLR Institute of Technology, with projects focused on MERN Full Stack development in '24 and UI/UX design in '25.</p></div>
         </div>
       </div>
+
     </div>
   </section>
 
   <!-- ============== EDUCATION ============== -->
   <section id="education">
     <div class="wrap">
-      <div class="section-head reveal">
+      <div class="section-head">
         <span class="tag">Foundations</span>
         <h2>Education</h2>
         <div class="rule"></div>
@@ -271,13 +302,14 @@
           <div class="t-org">St. Andrew's High School, Bowenpally, Hyderabad — 87%</div>
         </div>
       </div>
+
     </div>
   </section>
 
   <!-- ============== CONTACT ============== -->
   <section id="contact">
     <div class="wrap">
-      <div class="section-head reveal">
+      <div class="section-head">
         <span class="tag">CONNECT</span>
         <h2>Get in Touch</h2>
         <div class="rule"></div>
@@ -299,7 +331,10 @@
           <span class="tb-label">GitHub</span>
           <span class="tb-value">/shreyas260905</span>
         </a>
-
+        <a class="contact-cell" href="./ShreyasResume.pdf" target="_blank" rel="noopener noreferrer">
+          <span class="tb-label">Resume</span>
+          <span class="tb-value">View PDF &rarr;</span>
+        </a>
       </div>
     </div>
   </section>

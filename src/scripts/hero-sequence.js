@@ -91,14 +91,16 @@ export function initHeroSequence() {
   const titleblockCells = document.querySelectorAll('.titleblock div');
   const scrollCue = document.querySelector('.scroll-cue');
   const titleblock = document.querySelector('.titleblock');
+  const actions = document.querySelector('.hero-actions');
 
   if (!eyebrow || !titleLines.length) return;
 
   const heroLines = extractHeroLines();
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const entrance = [eyebrow, titleLines, sub, actions, titleblockCells, scrollCue, titleblock].filter(Boolean);
 
   if (prefersReducedMotion) {
-    gsap.set([eyebrow, titleLines, sub, titleblockCells, scrollCue, titleblock], {
+    gsap.set(entrance, {
       opacity: 1,
       y: 0,
       clearProps: 'all',
@@ -113,6 +115,7 @@ export function initHeroSequence() {
     el.textContent = '';
   });
   gsap.set(sub, { opacity: 0, y: 18 });
+  if (actions) gsap.set(actions, { opacity: 0, y: 16 });
   gsap.set(titleblock, { opacity: 0, y: 16 });
   gsap.set(titleblockCells, { opacity: 0, y: 10 });
   gsap.set(scrollCue, { opacity: 0, y: 12 });
@@ -123,8 +126,11 @@ export function initHeroSequence() {
 
     const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
 
-    tl.to(sub, { opacity: 1, y: 0, duration: 0.6 })
-      .to(titleblock, { opacity: 1, y: 0, duration: 0.5 }, '-=0.3')
+    tl.to(sub, { opacity: 1, y: 0, duration: 0.6 });
+    if (actions) {
+      tl.to(actions, { opacity: 1, y: 0, duration: 0.5 }, '-=0.3');
+    }
+    tl.to(titleblock, { opacity: 1, y: 0, duration: 0.5 }, '-=0.3')
       .to(
         titleblockCells,
         {

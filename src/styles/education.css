@@ -1,62 +1,87 @@
 /* ==========================================================================
-   EDUCATION ("Foundations") — vertical timeline
+   EDUCATION
    ========================================================================== */
 
 .timeline {
-  --timeline-gutter: var(--space-xl);
-  --timeline-marker-size: 11px;
-  --timeline-line-width: 1.5px;
+  --timeline-gutter: 36px;
+  --timeline-marker-size: 13px;
+  --timeline-line-width: 1px;
   --timeline-axis: calc(var(--timeline-marker-size) / 2 - var(--timeline-line-width) / 2);
   position: relative;
-  padding-left: var(--timeline-gutter);
+  padding: 32px 32px 32px calc(var(--timeline-gutter) + 24px);
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  border: 1px solid rgba(244, 237, 224, 0.14);
+  border-top: 3px solid var(--coral);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-soft);
+  contain: layout style;
 }
+
+/* Vertical timeline line */
 .timeline::before {
   content: "";
   position: absolute;
-  left: var(--timeline-axis);
-  top: var(--space-xs);
-  bottom: var(--space-xs);
+  left: calc(24px + var(--timeline-axis));
+  top: 48px;
+  bottom: 48px;
   width: var(--timeline-line-width);
-  background: #B8B8B8;
-  opacity: 1;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 107, 91, 0.6) 0%,
+    rgba(244, 237, 224, 0.25) 40%,
+    rgba(244, 237, 224, 0.12) 100%
+  );
 }
 
 .t-item {
   position: relative;
-  padding-bottom: 44px;
-  transition: transform 0.25s ease;
+  padding-bottom: 38px;
+  transition: transform 0.28s ease;
 }
 .t-item:last-child { padding-bottom: 0; }
-.t-item:hover {
-  transform: translateX(var(--space-xs));
-}
+.t-item:hover { transform: translateX(5px); }
+
+/* Timeline dot marker */
 .t-item::before {
   content: "";
   position: absolute;
   left: calc(-1 * var(--timeline-gutter));
-  top: var(--space-2xs);
+  top: 5px;
   width: var(--timeline-marker-size);
   height: var(--timeline-marker-size);
-  border: 2px solid var(--cyan);
-  background: var(--bg-0);
-  transition: box-shadow var(--transition-base);
+  border-radius: var(--radius-pill);
+  border: 2px solid var(--coral);
+  background: var(--navy-dark);
+  box-shadow: 0 0 0 4px rgba(10, 18, 36, 0.8), 0 0 10px rgba(255, 107, 91, 0.2);
+  transition: background var(--transition-base), box-shadow var(--transition-base), border-color var(--transition-base);
 }
 .t-item:hover::before {
-  box-shadow: 0 0 0 4px var(--accent-glow-medium);
+  background: var(--coral);
+  box-shadow: 0 0 0 4px rgba(10, 18, 36, 0.8), 0 0 16px rgba(255, 107, 91, 0.45);
 }
+
 .t-item .t-years {
-  font-family: var(--font-mono);
+  font-family: var(--font-display);
   font-size: 11px;
-  color: var(--accent);
-  margin-bottom: var(--space-xs);
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--coral);
+  margin-bottom: 7px;
   display: block;
 }
 .t-item h3 {
-  font-size: 17px;
-  color: var(--paper);
-  margin-bottom: var(--space-2xs);
+  font-size: 20px;
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  color: var(--cream);
+  margin-bottom: 5px;
+  line-height: 1.25;
 }
 .t-item .t-org {
-  color: var(--paper-dim);
-  font-size: 14px;
+  color: rgba(212, 204, 190, 0.78);
+  font-size: 15px;
+  line-height: 1.55;
 }

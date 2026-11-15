@@ -1,10 +1,7 @@
 /* ==========================================================================
-   COMPONENTS — full-page overlays and small reusable widgets
-   (preloader, scroll progress bar, background canvas, cursor spotlight,
-   back-to-top button)
+   COMPONENTS — atmosphere, overlays, cursor, progress, back-to-top
    ========================================================================== */
 
-/* ---------- custom cursor (desktop fine-pointer only) ---------- */
 html.has-custom-cursor,
 html.has-custom-cursor * {
   cursor: none !important;
@@ -27,7 +24,94 @@ html.has-custom-cursor * {
   opacity: 0;
 }
 
-/* ---------- background canvas grid ---------- */
+/* ---------- atmospheric background ---------- */
+.atmosphere {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-bg);
+  pointer-events: none;
+  overflow: hidden;
+}
+
+/* Deep navy base — darker than before so the glow pops harder */
+.atmosphere-base {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(170deg, #0a1222 0%, #0d1830 35%, #111d38 60%, #0c1628 100%);
+}
+
+/* Fine vertical pinstripes — stronger opacity to match reference */
+.atmosphere-stripes {
+  position: absolute;
+  inset: -2px;
+  background: repeating-linear-gradient(
+    90deg,
+    transparent 0,
+    transparent 11px,
+    rgba(244, 237, 224, 0.07) 11px,
+    rgba(244, 237, 224, 0.07) 12px
+  );
+  /* Fade the stripes: fully visible top-centre, fade toward bottom edges */
+  mask-image: linear-gradient(
+    180deg,
+    rgba(0,0,0,0.9) 0%,
+    rgba(0,0,0,0.75) 40%,
+    rgba(0,0,0,0.5) 70%,
+    rgba(0,0,0,0.65) 100%
+  );
+  -webkit-mask-image: linear-gradient(
+    180deg,
+    rgba(0,0,0,0.9) 0%,
+    rgba(0,0,0,0.75) 40%,
+    rgba(0,0,0,0.5) 70%,
+    rgba(0,0,0,0.65) 100%
+  );
+}
+
+.atmosphere-glow {
+  position: absolute;
+  border-radius: 50%;
+  will-change: transform;
+}
+
+/* Left-side soft grey/cream ambient — cool, diffused, subtle */
+.atmosphere-glow--cream {
+  width: min(900px, 85vw);
+  height: min(700px, 72vh);
+  left: -12%;
+  top: 20%;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(180, 170, 158, 0.18) 0%,
+    rgba(200, 192, 180, 0.09) 35%,
+    rgba(180, 170, 158, 0.04) 60%,
+    transparent 78%
+  );
+  filter: blur(55px);
+  animation: glow-drift-cream 28s ease-in-out infinite;
+}
+
+/* Coral glow removed */
+
+/* Edge vignette to frame the content */
+.atmosphere-vignette {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 110% 90% at center, transparent 38%, rgba(8, 14, 28, 0.62) 100%),
+    linear-gradient(180deg, rgba(8, 14, 28, 0.42) 0%, transparent 14%, transparent 80%, rgba(8, 14, 28, 0.55) 100%),
+    linear-gradient(90deg, rgba(8, 14, 28, 0.38) 0%, transparent 25%, transparent 75%, rgba(8, 14, 28, 0.28) 100%);
+}
+
+@keyframes glow-drift-cream {
+  0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
+  33%       { transform: translate3d(2%, 3%, 0) scale(1.04); }
+  66%       { transform: translate3d(-2%, -2%, 0) scale(0.97); }
+}
+
+/* glow-drift-coral removed */
+
 #bg-canvas {
   position: fixed;
   inset: 0;
@@ -35,22 +119,14 @@ html.has-custom-cursor * {
   pointer-events: none;
 }
 
-/* ---------- cursor spotlight ---------- */
-#spotlight {
-  position: fixed;
-  inset: 0;
-  z-index: var(--z-spotlight);
-  pointer-events: none;
-  background: radial-gradient(600px circle at var(--mx) var(--my), rgba(255, 255, 255, 0.012), transparent 70%);
-  transition: background 0.1s ease-out;
-}
+/* #spotlight removed — cursor-following light effect disabled */
 
 /* ---------- preloader ---------- */
 #preloader {
   position: fixed;
   inset: 0;
   z-index: var(--z-preloader);
-  background: var(--bg-0);
+  background: var(--navy-deep);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -62,19 +138,20 @@ html.has-custom-cursor * {
   visibility: hidden;
 }
 .pl-label {
-  font-family: var(--font-mono);
+  font-family: var(--font-display);
   font-size: 11px;
-  letter-spacing: 0.25em;
-  color: var(--paper-dim);
+  letter-spacing: 0.22em;
+  color: var(--cream-muted);
   text-transform: uppercase;
   margin-bottom: var(--space-md);
 }
 .pl-bar {
   width: 220px;
   height: 2px;
-  background: var(--grid-line-strong);
+  background: var(--border-subtle);
   position: relative;
   overflow: hidden;
+  border-radius: var(--radius-pill);
 }
 .pl-fill {
   position: absolute;
@@ -82,13 +159,13 @@ html.has-custom-cursor * {
   top: 0;
   height: 100%;
   width: 0%;
-  background: var(--cyan);
+  background: var(--coral);
   transition: width 0.25s ease-out;
 }
 .pl-pct {
-  font-family: var(--font-mono);
+  font-family: var(--font-display);
   font-size: 11px;
-  color: var(--cyan);
+  color: var(--coral);
   margin-top: var(--space-sm);
   letter-spacing: 0.1em;
 }
@@ -99,40 +176,45 @@ html.has-custom-cursor * {
   top: 0;
   left: 0;
   height: 2px;
-  background: var(--cyan);
+  background: linear-gradient(90deg, var(--coral) 0%, var(--coral-hover) 100%);
   z-index: var(--z-progress);
   width: 0%;
   transition: width 0.1s linear;
-  box-shadow: 0 0 8px var(--cyan);
+  box-shadow: 0 0 8px rgba(255, 107, 91, 0.5);
 }
 
-/* ---------- back to top ---------- */
+/* ---------- back-to-top ---------- */
 #to-top {
   position: fixed;
   bottom: 28px;
   right: 28px;
   z-index: var(--z-totop);
-  width: 42px;
-  height: 42px;
-  border: var(--border-hairline);
-  background: rgba(8, 9, 10, 0.8);
-  backdrop-filter: blur(6px);
-  color: var(--cyan);
-  font-family: var(--font-mono);
-  font-size: 14px;
+  width: 46px;
+  height: 46px;
+  border-radius: var(--radius-pill);
+  border: 1.5px solid var(--coral);
+  background: rgba(10, 18, 36, 0.82);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  color: var(--coral);
+  font-family: var(--font-display);
+  font-size: 18px;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
   opacity: 0;
   pointer-events: none;
-  transition: opacity var(--transition-base), transform var(--transition-fast), background var(--transition-fast);
+  box-shadow: 0 4px 20px rgba(255, 107, 91, 0.25), var(--shadow-soft);
+  transition: opacity var(--transition-base), transform var(--transition-base), background var(--transition-fast), color var(--transition-fast), box-shadow var(--transition-fast);
 }
 #to-top.show {
   opacity: 1;
   pointer-events: auto;
 }
 #to-top:hover {
-  background: var(--accent-glow-medium);
-  transform: translateY(-2px);
+  background: var(--coral);
+  color: var(--navy-deep);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 28px rgba(255, 107, 91, 0.45);
 }
